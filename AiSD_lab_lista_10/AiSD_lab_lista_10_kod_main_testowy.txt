@@ -1,0 +1,30 @@
+String przykladowyString = "ala i ola.";
+        int[] freqArr = getCharFrequencyArray(przykladowyString);
+        for (int i=0; i< freqArr.length; i++){
+            System.out.println(i + ": " + (char)i + "    " + freqArr[i]);
+        }
+        int[][] redFreqArr = getReducedFrequencyArray(freqArr);
+        for(int i=0; i< redFreqArr.length; i++){
+            System.out.println(redFreqArr[i][0] + ": " + (char)redFreqArr[i][0] + "    " + redFreqArr[i][1]);
+        }
+        ArrayList<HufffmanTree> hTList = forester(getReducedFrequencyArray(getCharFrequencyArray(przykladowyString)));
+        System.out.println(hTList.get(0).getRootWeight());
+        HufffmanTree finalHT = createHuffmanTree(forester(getReducedFrequencyArray(getCharFrequencyArray(przykladowyString))));
+        System.out.println(finalHT.getRootWeight());
+        System.out.println(finalHT.getCode());
+        String s = "\n";
+        char[] c =  s.toCharArray();
+        System.out.println(c.length);
+        for (int i=0; i<c.length; i++){
+            System.out.println((int)c[i]);
+            System.out.print("123");
+        }
+        String[][] codeTable = convertToCodeTable(finalHT);
+        System.out.println("heheszki");
+        for(int i =0; i< codeTable.length; i++){
+            System.out.println(codeTable[i][0] + " " + codeTable[i][1]);
+        }
+        String codedString = getCodedString(codeTable,przykladowyString);
+        System.out.println(codedString);
+        System.out.println("ewe");
+        System.out.println(finalHT.decodeString(codedString));
